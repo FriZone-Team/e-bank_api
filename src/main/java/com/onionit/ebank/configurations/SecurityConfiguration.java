@@ -35,6 +35,7 @@ public class SecurityConfiguration {
         httpSecurity.formLogin().disable();
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/error").permitAll()
+                .requestMatchers("/health/*").permitAll()
                 .anyRequest().authenticated();
         return httpSecurity.build();
     }
