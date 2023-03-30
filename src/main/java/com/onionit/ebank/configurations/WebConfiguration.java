@@ -21,6 +21,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     @Override
     public void configurePathMatch(@NotNull PathMatchConfigurer configurer) {
         configurer.addPathPrefix("health", HandlerTypePredicate.forAnnotation(HealthController.class));
+        configurer.addPathPrefix("resources", HandlerTypePredicate.forAnnotation(ResourcesController.class));
     }
 
     @Override
