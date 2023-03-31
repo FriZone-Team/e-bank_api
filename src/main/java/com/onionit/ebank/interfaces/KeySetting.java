@@ -3,6 +3,7 @@ package com.onionit.ebank.interfaces;
 import lombok.Getter;
 
 public enum KeySetting {
+    IS_SEEDED("isSeeded"),
     ;
 
     @Getter
