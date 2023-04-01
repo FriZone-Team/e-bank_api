@@ -1,9 +1,13 @@
 package com.onionit.ebank.interfaces;
 
 import lombok.Getter;
+import org.jetbrains.annotations.Nullable;
 
 public enum KeySetting {
     IS_SEEDED("isSeeded"),
+    ADMIN_DEFAULT_PASSWORD("adminDefaultPassword"),
+    USER_USERNAME("userUsername"),
+    USER_DEFAULT_PASSWORD("userDefaultPassword"),
     ;
 
     @Getter
