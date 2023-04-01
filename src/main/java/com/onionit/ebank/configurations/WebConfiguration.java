@@ -3,7 +3,9 @@ package com.onionit.ebank.configurations;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import com.onionit.ebank.controllers.annotations.AuthController;
 import com.onionit.ebank.controllers.annotations.HealthController;
+import com.onionit.ebank.controllers.annotations.ResourcesController;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -22,6 +24,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void configurePathMatch(@NotNull PathMatchConfigurer configurer) {
         configurer.addPathPrefix("health", HandlerTypePredicate.forAnnotation(HealthController.class));
         configurer.addPathPrefix("resources", HandlerTypePredicate.forAnnotation(ResourcesController.class));
+        configurer.addPathPrefix("auth", HandlerTypePredicate.forAnnotation(AuthController.class));
     }
 
     @Override
