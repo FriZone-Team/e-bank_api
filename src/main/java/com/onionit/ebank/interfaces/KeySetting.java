@@ -8,6 +8,8 @@ public enum KeySetting {
     ADMIN_DEFAULT_PASSWORD("adminDefaultPassword"),
     USER_USERNAME("userUsername"),
     USER_DEFAULT_PASSWORD("userDefaultPassword"),
+    AUTHENTICATION_SECRET("authenticationSecret"),
+    AUTHENTICATION_EXPIRATION("authenticationExpiration"),
     ;
 
     @Getter
