@@ -1,7 +1,6 @@
 package com.onionit.ebank.interfaces;
 
 import lombok.Getter;
-import org.jetbrains.annotations.Nullable;
 
 public enum KeySetting {
     IS_SEEDED("isSeeded"),

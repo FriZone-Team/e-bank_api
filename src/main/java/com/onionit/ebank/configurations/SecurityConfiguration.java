@@ -40,6 +40,7 @@ public class SecurityConfiguration {
         httpSecurity.authorizeHttpRequests()
                 .requestMatchers("/error").permitAll()
                 .requestMatchers("/health/*").permitAll()
+                .requestMatchers("/auth/*").permitAll()
                 .anyRequest().authenticated();
         httpSecurity.addFilterBefore(authenticationFilter, UsernamePasswordAuthenticationFilter.class);
         return httpSecurity.build();
