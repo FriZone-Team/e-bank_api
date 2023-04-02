@@ -1,5 +1,7 @@
 package com.onionit.ebank.models;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.onionit.ebank.interfaces.View;
 import com.onionit.ebank.rbac.BaseRole;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +25,7 @@ public class Role extends BaseModel implements BaseRole<Permission> {
     @Column(unique = true)
     protected String code;
 
+    @JsonView(View.Admin.class)
     @Getter
     @Setter
     @ManyToMany(fetch = FetchType.EAGER)

@@ -1,6 +1,8 @@
 package com.onionit.ebank.rbac;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.onionit.ebank.interfaces.View;
 import org.hibernate.collection.spi.PersistentSet;
 import org.springframework.security.core.AuthenticatedPrincipal;
 
@@ -40,6 +42,7 @@ public interface BaseUser<P extends BasePermission, R extends BaseRole<P>> exten
         this.getPermissionsEditable().add(permission);
     }
 
+    @JsonView({View.Admin.class, View.Owned.class})
     default HashSet<P> getAllPermissions() {
         HashSet<P> permissions = new HashSet<>(this.getPermissions());
         for (R role : this.getRoles()) {

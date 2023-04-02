@@ -1,5 +1,7 @@
 package com.onionit.ebank.controllers.resources;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.onionit.ebank.interfaces.View;
 import com.onionit.ebank.repositories.BaseRepository;
 import com.onionit.ebank.services.RepositoryService;
 import org.springframework.data.domain.Page;
@@ -22,17 +24,20 @@ public abstract class BaseController<M, S extends RepositoryService<M, ?>> {
     }
 
     @GetMapping
+    @JsonView(View.List.class)
     public Page<M> all(Pageable pageable) {
         return this.getRepository().findAll(pageable);
     }
 
     @GetMapping("{id}")
+    @JsonView(View.Detail.class)
     public ResponseEntity<M> detail(@PathVariable("id") String id) {
         Optional<M> instance = this.getRepository().findById(id);
         return instance.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
+    @JsonView(View.Created.class)
     public ResponseEntity<M> create(@RequestBody() M data) throws CreateFailedException {
         try {
             if (!Objects.isNull(data)) {
@@ -46,6 +51,7 @@ public abstract class BaseController<M, S extends RepositoryService<M, ?>> {
     }
 
     @PutMapping("{id}")
+    @JsonView(View.Updated.class)
     public Optional<M> replace(@PathVariable("id") String id, @RequestBody() M data) {
         Optional<M> instance = this.getRepository().findById(id);
         if (instance.isPresent()) {
@@ -55,6 +61,7 @@ public abstract class BaseController<M, S extends RepositoryService<M, ?>> {
     }
 
     @PatchMapping("{id}")
+    @JsonView(View.Updated.class)
     public Optional<M> update(@PathVariable("id") String id, @RequestBody() M data) {
         Optional<M> instance = this.getRepository().findById(id);
         if (instance.isPresent()) {
@@ -65,6 +72,7 @@ public abstract class BaseController<M, S extends RepositoryService<M, ?>> {
 
 
     @DeleteMapping("{id}")
+    @JsonView(View.Deleted.class)
     public Optional<M> delete(@PathVariable("id") String id) {
         Optional<M> instance = this.getRepository().findById(id);
         if (instance.isPresent()) {
