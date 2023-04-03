@@ -7,29 +7,21 @@ import javax.validation.constraints.NotBlank;
 @Data
 public class InfoRequest {
 
-	@NotBlank
-	private String street;
+    @NotBlank
+    private Long departmentId;
 
-	@NotBlank
-	private String suite;
+    @NotBlank
+    private String suite;
 
-	@NotBlank
-	private String city;
+    @NotBlank
+    private String city;
 
-	@NotBlank
-	private String zipcode;
+    @NotBlank
+    private String zipcode;
 
-	private String companyName;
+    private String companyName;
 
-	private String catchPhrase;
+    private String website;
 
-	private String bs;
-
-	private String website;
-
-	private String phone;
-
-	private String lat;
-
-	private String lng;
+    private String phone;
 }

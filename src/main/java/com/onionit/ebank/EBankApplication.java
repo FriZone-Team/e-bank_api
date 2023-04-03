@@ -12,27 +12,27 @@ import javax.annotation.PostConstruct;
 import java.util.TimeZone;
 
 @SpringBootApplication
-@EntityScan(basePackageClasses = { EBankApplication.class, Jsr310Converters.class })
+@EntityScan(basePackageClasses = {EBankApplication.class, Jsr310Converters.class})
 
 public class EBankApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(EBankApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(EBankApplication.class, args);
+    }
 
-	@PostConstruct
-	void init() {
-		TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-	}
+    @PostConstruct
+    void init() {
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+    }
 
-	@Bean
-	public JwtAuthenticationFilter jwtAuthenticationFilter() {
-		return new JwtAuthenticationFilter();
-	}
+    @Bean
+    public JwtAuthenticationFilter jwtAuthenticationFilter() {
+        return new JwtAuthenticationFilter();
+    }
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    public ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
 }

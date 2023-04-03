@@ -16,19 +16,19 @@ import java.time.Instant;
 @Data
 @EntityListeners(AuditingEntityListener.class)
 @JsonIgnoreProperties(
-		value = { "createdAt", "updatedAt" },
-		allowGetters = true
+        value = {"createdAt", "updatedAt"},
+        allowGetters = true
 )
 public abstract class DateAudit implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@CreatedDate
-	@Column(nullable = false, updatable = false)
-	private Instant createdAt;
+    @CreatedDate
+    @Column(nullable = false, updatable = false)
+    private Instant createdAt;
 
-	@LastModifiedDate
-	@Column(nullable = false)
-	private Instant updatedAt;
+    @LastModifiedDate
+    @Column(nullable = false)
+    private Instant updatedAt;
 
 }

@@ -8,16 +8,16 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer {
 
-	@Value("cors.allowedOrings")
-	private String allowedOrigins;
+    @Value("cors.allowedOrings")
+    private String allowedOrigins;
 
-	public void addCorsMappings(CorsRegistry registry) {
-		final long MAX_AGE_SECS = 3600;
+    public void addCorsMappings(CorsRegistry registry) {
+        final long MAX_AGE_SECS = 3600;
 
-		registry.addMapping("/**")
-				.allowedOrigins(allowedOrigins)
-				.allowedMethods("GET", "POST", "PUT", "DELETE")
-				.allowedHeaders("*")
-				.maxAge(MAX_AGE_SECS);
-	}
+        registry.addMapping("/**")
+                .allowedOrigins(allowedOrigins)
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("*")
+                .maxAge(MAX_AGE_SECS);
+    }
 }
